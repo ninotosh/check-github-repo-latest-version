@@ -1,0 +1,32 @@
+name: test
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 1
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: test success
+        uses: ./
+        with:
+          tag: ninotosh/check-github-repo-latest-version@v1.0
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: fail and continue
+        id: should-fail
+        uses: ./
+        with:
+          tag: ninotosh/check-github-repo-latest-version@v0
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: test failure
+        if: steps.should-fail.outcome != 'failure'
+        run: exit 1
