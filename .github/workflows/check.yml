@@ -1,4 +1,4 @@
-name: check latest versions
+name: check
 on:
   workflow_dispatch:
   schedule:
