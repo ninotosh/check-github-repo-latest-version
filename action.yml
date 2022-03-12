@@ -9,7 +9,7 @@ inputs:
     description: e.g. hashicorp/terraform@v1.1
   github_token:
     required: true
-    description: e.g. ${{ secrets.GITHUB_TOKEN }}
+    description: e.g. secrets.GITHUB_TOKEN
 runs:
   using: composite
   steps:
