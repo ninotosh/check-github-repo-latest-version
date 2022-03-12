@@ -1,0 +1,16 @@
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '13 0 * * *'
+
+jobs:
+  check:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 1
+
+    steps:
+      - name: actions/checkout
+        uses: ninotosh/check-github-repo-latest-version@v0.1
+        with:
+          release: actions/checkout@v3
+          github_token: ${{ secrets.GITHUB_TOKEN }}
