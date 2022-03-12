@@ -1,0 +1,15 @@
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 1
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./action.yml
+        with:
+          tag: ninotosh/check-github-repo-latest-version@v0.1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
