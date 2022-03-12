@@ -10,7 +10,7 @@ jobs:
     timeout-minutes: 1
 
     steps:
-      - name: actions/checkout
+      - name: check the latest version of https://github.com/actions/checkout
         uses: ninotosh/check-github-repo-latest-version@v0.1
         with:
           release: actions/checkout@v3
