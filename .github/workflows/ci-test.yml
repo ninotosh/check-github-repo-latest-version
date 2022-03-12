@@ -12,7 +12,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./
+      - name: test success
+        uses: ./
         with:
           tag: ninotosh/check-github-repo-latest-version@v0.1
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: fail and continue
+        id: should-fail
+        uses: ./
+        with:
+          tag: ninotosh/check-github-repo-latest-version@v0.0
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: test failure
+        if: steps.should-fail.outcome != 'failure'
+        run: exit 1
