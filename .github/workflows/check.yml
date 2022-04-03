@@ -13,5 +13,5 @@ jobs:
       - name: check the latest version of https://github.com/actions/checkout
         uses: ninotosh/check-github-repo-latest-version@v1
         with:
-          release: actions/checkout@v3
+          tag: actions/checkout@v3
           github_token: ${{ secrets.GITHUB_TOKEN }}
