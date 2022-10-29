@@ -1,8 +1,9 @@
 name: check latest versions
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '13 0 * * *'
+  # temporarily disabled as the latest actions/checkout is older than v3
+  # schedule:
+  #   - cron: '13 0 * * *'
 
 jobs:
   check:
